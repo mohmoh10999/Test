@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="gic.mapper.SearchRoomMapper">
+	<select id="getRoomList" resultType="gic.dto.RoomDto">
+		SELECT
+		*
+		FROM
+		TBL_ROOM
+	</select>
+	<insert id="saveRoom" parameterType="gic.dto.RoomDto">
+		insert into
+		TBL_ROOM(roomId,type)
+		values (
+		#{roomId},
+		#{type})
+	</insert>
+	<select id="getRoomWithId" resultType="gic.dto.RoomDto"
+		parameterType="String">
+		SELECT
+		*
+		FROM
+		TBL_ROOM
+		WHERE
+		roomId=#{roomId}
+	</select>
+	<update id="updateUser" parameterType="gic.dto.RoomDto">
+		update TBL_ROOM
+		set
+		type=#{type}
+		where roomId=#{roomId}
+	</update>
+	<delete id="deleteRoom" parameterType="String" >
+	delete from TBL_ROOM
+	where roomId=#{roomId}
+	</delete>
+</mapper>
